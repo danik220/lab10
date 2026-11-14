@@ -13,6 +13,7 @@ fi
 ROOT="$SURNAME"
 LAST_NAME="$SURNAME"
 FIRST_NAME="${FIRSTNAME:-${NAME:-Daniel}}"
+LOG_FILE="${LOGFILE:-access.log}"
 
 echo "=== 1. Створення каталогів DEE, SEE, SSS ==="
 
@@ -51,10 +52,6 @@ else
 fi
 
 echo "=== 5. Помилки 404 в Apache-логах ==="
-
-if [ ! -f "$LOG_FILE" ] && [ -f "access.log" ]; then
-    LOG_FILE="access.log"
-fi
 
 if [ -f "$LOG_FILE" ]; then
     COUNT_404=$(grep -c " 404 " "$LOG_FILE" || true)
