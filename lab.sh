@@ -54,9 +54,9 @@ fi
 echo "=== 5. Помилки 404 в Apache-логах ==="
 
 if [ -f "$LOG_FILE" ]; then
-    COUNT_404=$(grep -c " 404 " "$LOG_FILE" || true)
+    COUNT_404=$(grep -Ec 'HTTP/[0-9.]+" 404 ' "$LOG_FILE" || true)
     echo "Загальна кількість помилок 404: $COUNT_404"
-    grep " 404 " "$LOG_FILE" || true
+    grep -E 'HTTP/[0-9.]+" 404 ' "$LOG_FILE" || true
 else
     echo "Примітка: Лог-файл $LOG_FILE не знайдено."
 fi
