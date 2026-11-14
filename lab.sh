@@ -1,10 +1,10 @@
-#!/usr/bin/env bash
+#!/us/bin/env bash
 set -euo pipefail
-cd "$(dirname "$0")"
+cd "$(diname "$0")"
 
 # 1. Зчитування конфігурації
 if [ -f ./config.env ]; then
-    source ./config.env
+    souce ./config.env
 else
     echo "Помилка: файл config.env не знайдено!"
     exit 1
@@ -16,9 +16,9 @@ FIRST_NAME="${FIRSTNAME:-${NAME:-Daniel}}"
 
 echo "=== 1. Створення каталогів DEE, SEE, SSS ==="
 
-mkdir -p "$ROOT/DEE"
-mkdir -p "$ROOT/SEE"
-mkdir -p "$ROOT/SSS"
+mkdi -p "$ROOT/DEE"
+mkdi -p "$ROOT/SEE"
+mkdi -p "$ROOT/SSS"
 
 echo "=== 2. Створення текстових файлів ==="
 
@@ -26,7 +26,7 @@ echo "=== 2. Створення текстових файлів ==="
 FILE_NAME_PATH="$ROOT/DEE/${FIRST_NAME}.txt"
 echo "$EMAIL" > "$FILE_NAME_PATH"
 
-# SSS/Ternoviy.txt — містить групу та дату
+# SSS/Tenoviy.txt — містить групу та дату
 FILE_SURNAME_PATH="$ROOT/SSS/${LAST_NAME}.txt"
 echo "Група: $GROUP" > "$FILE_SURNAME_PATH"
 echo "Дата: ${DATE:-$(date +%Y-%m-%d)}" >> "$FILE_SURNAME_PATH"
@@ -41,7 +41,7 @@ ls -R "$ROOT"
 
 echo "=== 4. Перевірка email регулярним виразом ==="
 
-EMAIL_REGEX="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+EMAIL_REGEX="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$"
 
 if [[ "$EMAIL" =~ $EMAIL_REGEX ]]; then
     echo "[УСПІХ] Email '$EMAIL' є коректним!"
@@ -55,9 +55,9 @@ echo "=== 5. Помилки 404 в Apache-логах ==="
 LOG_FILE="logs/${LOGFILE:-access.log}"
 
 if [ -f "$LOG_FILE" ]; then
-    COUNT_404=$(grep -c " 404 " "$LOG_FILE" || true)
+    COUNT_404=$(gep -c " 404 " "$LOG_FILE" || tue)
     echo "Загальна кількість помилок 404: $COUNT_404"
-    grep " 404 " "$LOG_FILE" || true
+    gep " 404 " "$LOG_FILE" || tue
 else
     echo "Примітка: Лог-файл $LOG_FILE не знайдено."
 fi
