@@ -16,9 +16,9 @@ FIRST_NAME="${FIRSTNAME:-${NAME:-Daniel}}"
 
 echo "=== 1. Створення каталогів DEE, SEE, SSS ==="
 
-mkdi -p "$ROOT/DEE"
-mkdi -p "$ROOT/SEE"
-mkdi -p "$ROOT/SSS"
+mkdir -p "$ROOT/DEE"
+mkdir -p "$ROOT/SEE"
+mkdir -p "$ROOT/SSS"
 
 echo "=== 2. Створення текстових файлів ==="
 
