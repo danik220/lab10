@@ -1,6 +1,6 @@
 #!/us/bin/env bash
 set -euo pipefail
-cd "$(diname "$0")"
+cd "$(dirname "$0")"
 
 # 1. Зчитування конфігурації
 if [ -f ./config.env ]; then
