@@ -4,7 +4,7 @@ cd "$(dirname "$0")"
 
 # 1. Зчитування конфігурації
 if [ -f ./config.env ]; then
-    souce ./config.env
+    source ./config.env
 else
     echo "Помилка: файл config.env не знайдено!"
     exit 1
